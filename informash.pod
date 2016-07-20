@@ -1,0 +1,114 @@
+=head1 NAME
+
+informash - A text generator using Markov chains
+
+=head1 SYNOPSIS
+
+informash --make-table [options] <file> ..
+
+S<informash [options] [--words COUNT] [--sentences COUNT]>
+S<          [--paragraphs COUNT]>
+
+
+=head1 DESCRIPTION
+
+B<infromash> is run in two stages.  Initially, it constructs the word
+table from one or more text files.  After that, B<informash> will use
+the word table generate text in the style of the original input text.
+
+The text should be in plain 7-bit ASCII(?) with paragraphs separated
+by blank lines.
+
+The following options are available:
+
+=over 5
+
+=item B<-t>/B<--table> I<FILE>
+
+Specifies the name of the file containing the word table.  If not
+specified, B<informash> defaults to C<informash.wtbl>.
+
+=item B<-m>/B<--make-table>
+
+Run in table-creation mode: creates a new word table from the files
+specified on the command-line.
+
+=item B<-w/-s/-p>/B<--words/--sentences/--paragraphs> I<COUNT>
+
+Generate and print I<COUNT> words, sentences or paragraphs.  When
+selecting words, the output may contain paragraph breaks (since these
+are considered words internally); otherwise, each sentence or
+paragraph is separated from the others by a blank line.
+
+It is an error to specify more than one of these options.
+
+If none of these options are given, C<-s 1> is implied.
+
+
+=item B<-d>/B<--debug-table> I<FILE>
+
+Writes the current word table's contents to I<FILE> in a
+human-readable format.  This is a debug feature intended to let
+developers inspect the word table.
+
+=item B<-s>/B<--seed> I<NUMBER>
+
+Initializes the random number generator using I<NUMBER>.  When used,
+B<informash> will always generate the same output for a given
+I<NUMBER>, command-line, word table and B<informash> build.  This is
+intended as a debugging aid.
+
+=item B<-h>/B<--help>
+
+Displays a brief summary of the available options and exits.
+
+=item B<-v>/B<--version>
+
+Displays the version information and exits.
+
+=back
+
+
+=head1 EXAMPLES
+
+    $ informash --make-table moby-dick.txt war-and-peace.txt
+    $ informash
+
+    I am?
+
+    $ informash -s 2
+
+    Thus he had not in.
+
+    "Look at no match, she was the activities at the coronation.
+
+    $
+
+
+=head1 BUGS AND CAVEATS
+
+Table files are not guaranteed to be compatible between different
+builds.  They should be treated as disposable caches.
+
+
+=head1 COPYRIGHT
+
+B<informash> and all related documents are Copyright (C) 2016 Chris
+Reuter, All Rights Reserved.
+
+B<informash> is distributed under the terms of the GNU General Public
+License version 2.0.
+
+=head1 NO WARRANTY
+
+B<informash> is distributed in the hope that it will be useful, but
+B<WITHOUT ANY WARRANTY>; without even the implied warranty of
+B<MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE>.  See the GNU
+General Public License for more details.
+
+=head1 AUTHOR
+
+Chris Reuter L<http://www.github.com/suetanvil/informash>.
+
+Contributions are welcome.
+
