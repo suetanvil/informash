@@ -26,8 +26,8 @@ the following:
 
 # Documentation
 
-See the included man page.  There's an online version at
-<http://github.com/suetanvil/informash/master/informash.pod>.
+See the included man page.  There's an online version
+[here](https://github.com/suetanvil/informash/blob/master/informash.pod).
 
 # Legal Stuff
 
